@@ -34,7 +34,4 @@ jobs:
           name: re-wezterm
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build default package
-        run: |
-          nix build ./nix --json \
-          | jq -r '.[].outputs | to_entries[].value' \
-          | cachix push re-wezterm
+        run: nix build ./nix
